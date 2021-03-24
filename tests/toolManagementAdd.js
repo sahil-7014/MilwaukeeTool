@@ -5,6 +5,8 @@ describe('Milwaukee Website', function () {
 
     it('Verifying Tool Management Page 2', async function () {
 
+        browser.get('https://onekeytest.milwaukeetool.com/');
+        browser.manage().addCookie({name: 'Mellon', value: 'Mellon'});
         browser.get('https://onekeytest.milwaukeetool.com/')
 
         launchBtn = element(by.xpath('//a[@title=\'Launch App\']'))
@@ -30,7 +32,7 @@ describe('Milwaukee Website', function () {
         addressLine1Company = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[2]"))
         addressLine2Company = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[3]"))
         cityTextCompany = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[4]"))
-        stateTextCompany = element(by.xpath("(//div//mat-select)[4]"))
+        stateTextCompany = element(by.xpath("(//div//mat-select)[3]"))
         stateSelectCompany = element(by.xpath("//span[.='Alabama']"))
         postalcodeTextCompany = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[5]"))
         phoneTextCompany = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[6]"))
@@ -48,7 +50,7 @@ describe('Milwaukee Website', function () {
         addressLine1Customer = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[2]"))
         addressLine2Customer = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[3]"))
         cityTextCustomer = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[4]"))
-        stateTextCustomer = element(by.xpath("(//div//mat-select)[4]"))
+        stateTextCustomer = element(by.xpath("(//div//mat-select)[3]"))
         stateSelectCustomer = element(by.xpath("//span[.='American Samoa']"))
         postalcodeTextCustomer = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[5]"))
         phoneTextCustomer = element(by.xpath("(//form//div[@class='ng-star-inserted']//input)[6]"))
@@ -61,18 +63,18 @@ describe('Milwaukee Website', function () {
         cancleCustomer = element(by.xpath("//div[@class='button-group']//button[.='Cancel']"))
 
         // Include Notes
-        noteBtn = element(by.xpath("//span[@class='ok-icons icon-ok_pencil cursor ok-fade']"))
-        inputNotes = element(by.xpath("(//span[@class='ok-icons icon-ok_pencil cursor ok-fade'])[2]"))
-        // numericValue = element(by.xpath("//span[@class='field-counter text-area-help']//ancestor:: form[@id='mtNote']"))
+        noteBtn = element(by.xpath("//div[normalize-space()='Report notes']"))
+        inputNotes = element(by.xpath("//textarea"))
+        EC = protractor.ExpectedConditions;
         
 
         // IMPLEMENTATION
-        await launchBtn.click()
-        await browser.manage().timeouts().implicitlyWait(10000);
+        // await launchBtn.click()
+        await browser.manage().timeouts().implicitlyWait(15000);
         await emailText.sendKeys('demotest2@mailinator.com');
         await passText.sendKeys('Test@123');
         await loginbtn.click();
-        await browser.sleep(2000)
+        await browser.manage().timeouts().implicitlyWait(15000);
         await reportbtn.click();
         await toolManagement.click()
         await browser.sleep(3000)
@@ -81,7 +83,7 @@ describe('Milwaukee Website', function () {
         browser.sleep(1000)
         expect(myCompanyInformationText.getText()).toEqual('My company information')
 
-        
+        /*
         // Company Information Input
         await browser.actions().click(myCompanyInformationToggle).perform()
         addCompanyInformationBtn.click()
@@ -90,7 +92,7 @@ describe('Milwaukee Website', function () {
         await addressLine1Company.sendKeys('Cubic Stays, Sector 70')
         await addressLine2Company.sendKeys('Near 61 Metro Station')
         await cityTextCompany.sendKeys('Noida')
-        browser.manage().timeouts().implicitlyWait(3000)
+        browser.manage().timeouts().implicitlyWait(15000)
         await stateTextCompany.click()
         browser.sleep(3000) 
         await stateSelectCompany.click()     
@@ -137,14 +139,14 @@ describe('Milwaukee Website', function () {
         browser.sleep(2000)
         cancleCustomer.click()
 
+*/
         // Include Notes Input
-        // await browser.actions().click(includeNotesToggle).perform()
-        // browser.sleep(4000)
-        // expect(noteBtn.isEnabled()).toBe(true)
-        // await browser.actions().mouseMove(inputNotes).perform()
-        // inputNotes.sendKeys('Report Summary---Summary Report')
-        // browser.sleep(5000)
-
+        await browser.actions().click(includeNotesToggle).perform()
+        browser.sleep(2000)
+        
+        await browser.actions().click(noteBtn).perform()
+        inputNotes.sendKeys('Report Summary---Summary Report')
+        browser.sleep(4000)
 
     })
 })

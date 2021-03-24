@@ -2,3 +2,5 @@ allure-results/
 screenshots/
 target/
 
+xmlresults.xml
+.gitignore
