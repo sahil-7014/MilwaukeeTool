@@ -9,7 +9,11 @@ describe('Milwaukee Website', function(){
         browser.sleep(2000)
         browser.get('https://onekeystaging.milwaukeetool.com/')
 
+<<<<<<< HEAD
         // browser.get('https://onekeytest.milwaukeetool.com/');    
+=======
+        // browser.get('https://onekeytest.milwaukeetool.com/');
+>>>>>>> main
         // browser.manage().addCookie({name: 'Mellon', value: 'Mellon'});
         // browser.get('https://onekeytest.milwaukeetool.com/')
 
