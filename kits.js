@@ -6,6 +6,9 @@ describe('Milwaukee Website', function(){
     it('Add Kit', async function(){
 
         browser.get('https://onekeystaging.milwaukeetool.com/')
+        browser.sleep(2000)
+        browser.get('https://onekeystaging.milwaukeetool.com/')
+
         // browser.get('https://onekeytest.milwaukeetool.com/');
         // browser.manage().addCookie({name: 'Mellon', value: 'Mellon'});
         // browser.get('https://onekeytest.milwaukeetool.com/')
